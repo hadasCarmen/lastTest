@@ -3,20 +3,26 @@ import type { Lancher } from "../types/ILancher.ts";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import './CreateLancher.css'
-import { createLancher } from "../fetchs/fetches.ts";
-export default function CreateLanchComponent() {
-    const navigate = useNavigate();
+import { createLancher, updateLancherApi } from "../fetchs/fetches.ts";
 
+type Params={
+id?:string,
+launcher?:Lancher
+}
+export default function CreateLanchComponent(params:Params) {
+    const navigate = useNavigate();
+  const id = params?.id;
+  const launcher = params?.launcher;
   const [lancher, setLanchr] = useState<Lancher>({
-    city: "",
-    rocketType: "Shahab3",
-    latitude: 0,
-    longitude: 0,
-    name: "",
+    city: launcher?launcher.city:"",
+    rocketType: launcher?launcher.rocketType:"Shahab3",
+    latitude: launcher?launcher.latitude:0,
+    longitude:launcher?launcher.longitude: 0,
+    name:launcher?launcher.name: "",
   });
   const forAsinc = async (e: React.SubmitEvent) => {
     e.preventDefault();
-    const response = createLancher(lancher)
+    const response =!id? createLancher(lancher):updateLancherApi(lancher,id)
     if (!response) {
       toast.error("there is problem fetch lancher create");
       setLanchr({
@@ -113,7 +119,7 @@ export default function CreateLanchComponent() {
             setLanchr((prev) => ({ ...prev, name: e.target.value }))
           }
         />
-        <button type="submit">create lancher</button>
+        <button type="submit">create or update lancher</button>
       </form>
     </div>
   )
