@@ -30,7 +30,7 @@ export default function LaunchersId() {
 
   return (
     <div>
-      <button onClick={createlanch}>to create luncher</button>
+      <button onClick={createlanch}>come back to all lunchers</button>
 
       <ul>
         <li>city: {launcher.city}</li>

@@ -1,0 +1,18 @@
+ul{
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: rgb(16, 220, 63);
+    border-radius: 1rem;
+    border: 5px solid green;
+
+}
+li{
+   border: 2px solid rgb(208, 118, 178);
+   padding: 1rem;
+    background-color: rgb(225, 215, 29);
+    border-radius: 1rem; 
+}

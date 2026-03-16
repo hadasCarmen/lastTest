@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
+import './FilterCityAndType.css'
 type Params={
 city:string,
 rocketType:string
