@@ -20,7 +20,7 @@ export default function CreateLanchComponent(params: Params) {
     longitude: launcher ? launcher.longitude : 0,
     name: launcher ? launcher.name : "",
   });
-  const forAsinc = async (e: React.SubmitEvent) => {
+  const createOrUpdate = async (e: React.SubmitEvent) => {
     e.preventDefault();
     const response = !id
       ? createLancher(lancher)
@@ -51,7 +51,7 @@ export default function CreateLanchComponent(params: Params) {
     <div className="allPage">
       <button onClick={allLanchers}>Get All Lanchers</button>
 
-      <form action="" onSubmit={forAsinc}>
+      <form action="" onSubmit={createOrUpdate}>
         <div>
 
         <label htmlFor="city">city:</label>

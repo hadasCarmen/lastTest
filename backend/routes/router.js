@@ -9,9 +9,8 @@ const router = express.Router();
 
 router.post("/api/launchers", controllerLaunchersPost);
 router.get("/api/launchers", controllerLaunchersGet);
-
-  router.get("/api/launchers/:id", controllerLaunchersId)
-  router.delete("/api/launchers/:id",controllerLaunchersIdDelete);
-  router.put("/api/launchers/:id",controllerLaunchersIdPut);
+router.get("/api/launchers/:id", controllerLaunchersId);
+router.delete("/api/launchers/:id", controllerLaunchersIdDelete);
+router.put("/api/launchers/:id", controllerLaunchersIdPut);
 
 export default router;
