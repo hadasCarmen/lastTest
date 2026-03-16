@@ -10,7 +10,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/GetAllLanchers" element={<GetAllLanchers />} />
+          <Route path="/" element={<GetAllLanchers />} />
           <Route path="/createLancher" element={<CreateLancher />} />
           <Route path="/launchers/:id" element={<LaunchersId />} />
         </Routes>
