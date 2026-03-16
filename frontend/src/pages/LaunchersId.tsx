@@ -27,10 +27,18 @@ export default function LaunchersId() {
     allLanchers();
   }, []);
   const createlanch = () => navigate(-1);
-
+  const deleteLuncher = async () => {
+    await fetch(`http://localhost:5000/api/launchers/${id}`, {
+      method: "DELETE",
+    });
+    navigate(-1);
+    toast.success("luncher deletet");
+  };
   return (
     <div>
       <button onClick={createlanch}>come back to all lunchers</button>
+      <button onClick={deleteLuncher}>delete luncher</button>
+      <button onClick={createlanch}>update luncher</button>
 
       <ul>
         <li>city: {launcher.city}</li>
