@@ -13,3 +13,10 @@ form > * {
   background-color: rgb(225, 215, 29);
   border-radius: 1rem;
 }
+label {
+  margin: none;
+  padding: 3px;
+  border: 1px solid rgb(226, 234, 226);
+  background-color: rgb(214, 214, 198);
+  border-radius: 10px;
+}
