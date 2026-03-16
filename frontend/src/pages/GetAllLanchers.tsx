@@ -24,8 +24,8 @@ export default function GetAllLanchers() {
       {launchers.map((lancher: Lancher, idx: number) => {
         return (
           <div key={idx}>
-            <ul>
-              <h3>lancher{idx + 1}</h3>
+            <h3>lancher{idx + 1}</h3>
+            <ul onClick={() => navigate(`/launchers/${lancher._id}`)}>
               <li>city: {lancher.city}</li>
               <li>latitude:{lancher.latitude}</li>
               <li>longitude:{lancher.longitude}</li>

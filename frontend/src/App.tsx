@@ -3,6 +3,7 @@ import "./App.css";
 import GetAllLanchers from "./pages/GetAllLanchers.tsx";
 import { ToastContainer } from "react-toastify";
 import CreateLancher from "./pages/CreateLancher.tsx";
+import LaunchersId from "./pages/LaunchersId.tsx";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/GetAllLanchers" element={<GetAllLanchers />} />
           <Route path="/createLancher" element={<CreateLancher />} />
+          <Route path="/launchers/:id" element={<LaunchersId />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer position="top-right" autoClose={3000} />
