@@ -3,6 +3,7 @@ import type { Lancher } from "../types/ILancher.ts";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import './CreateLancher.css'
+import { createLancher } from "../fetchs/fetches.ts";
 export default function CreateLanchComponent() {
     const navigate = useNavigate();
 
@@ -15,19 +16,7 @@ export default function CreateLanchComponent() {
   });
   const forAsinc = async (e: React.SubmitEvent) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/launchers", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        city: lancher.city,
-        rocketType: lancher.rocketType,
-        latitude: lancher.latitude,
-        longitude: lancher.longitude,
-        name: lancher.name,
-      }),
-    });
+    const response = createLancher(lancher)
     if (!response) {
       toast.error("there is problem fetch lancher create");
       setLanchr({
