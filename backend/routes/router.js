@@ -1,5 +1,6 @@
 import express from "express";
 import { controllerLaunchersPost } from "../controllers/controllerLaunchersPost.js";
+import { controllerLaunchersGet } from "../controllers/controllerLaunchersGet.js";
 
 const router = express.Router();
 
