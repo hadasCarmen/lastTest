@@ -13,6 +13,15 @@ export const serviceLaunchersPost = async (
   if (typeof latitude !== "number" || typeof longitude !== "number") {
     throw new Error("latitude and longitude must be number");
   }
+  // if (
+  //     rocketType !== "Shahab3" &&
+  //     rocketType !== "Fetah110" &&
+  //     rocketType !== "Radwan" &&
+  //     rocketType !== "Kheibar"
+  //   ) {
+  //     throw new Error("rocketType need be from options");
+      
+  //   }
   Lancher.create({
       city: city,
       rocketType: rocketType,
