@@ -3,11 +3,13 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import type { Lancher } from "../types/ILancher.ts";
+import FilterCityAndType from "../components/FilterCityAndType.tsx";
 export default function GetAllLanchers() {
-  const navigate = useNavigate();
   const [launchers, setLanchers] = useState<Lancher[]>([]);
   const [city, setCity] = useState<string>("");
   const [rocketType, setRocketType] = useState<string>("");
+  const navigate = useNavigate();
+
   useEffect(() => {
     const allLanchers = async () => {
       const response = await fetch(
@@ -21,36 +23,14 @@ export default function GetAllLanchers() {
     };
     allLanchers();
   }, [city, rocketType]);
-  const createlanch = () => navigate("/createLancher");
   return (
     <div>
-      <button onClick={createlanch}>to create luncher</button>
-      <input
-        type="text"
-        required
-        name="city"
-        id="city"
-        value={city}
-        placeholder="city"
-        onChange={(e) => setCity(e.target.value)}
+      <FilterCityAndType
+        city={city}
+        rocketType={rocketType}
+        setCity={setCity}
+        setRocketType={setRocketType}
       />
-      <select
-        required
-        name="rocketType"
-        id="rocketType"
-        value={rocketType}
-        onChange={(e) =>
-          setRocketType(
-            e.target.value as "Shahab3" | "Fetah110" | "Radwan" | "Kheibar",
-          )
-        }
-      >
-        <option value="">coohse type</option>
-        <option value="Shahab3">Shahab3</option>
-        <option value="Fetah110">Fetah110</option>
-        <option value="Radwan">Radwan</option>
-        <option value="Kheibar">Kheibar</option>
-      </select>
       {launchers.map((lancher: Lancher, idx: number) => {
         return (
           <div key={idx}>
