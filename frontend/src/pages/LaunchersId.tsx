@@ -3,15 +3,17 @@ import type { Lancher } from "../types/ILancher.ts";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import CreateLanchComponent from "../components/CreateLanchComponent.tsx";
+import { destroidLancherApi } from "../fetchs/fetches.ts";
 
 export default function LaunchersId() {
   const user_type = localStorage.getItem("user_type");
   let canClickUpdate = true;
   let canClickDelete = true;
-
+  let canClickDestroid = false;
   if (user_type === "AirForceUser") {
     canClickUpdate = false;
     canClickDelete = false;
+    canClickDestroid = true;
   }
 
   let params = useParams();
@@ -53,10 +55,18 @@ export default function LaunchersId() {
     navigate(-1);
     toast.success("luncher deletet");
   };
+  const destroidLuncher = async () => {
+    if (id) {
+      await destroidLancherApi(id);
+    }
+  };
   return (
     <div>
       {canClickDelete && (
         <button onClick={deleteLuncher}>delete luncher</button>
+      )}
+      {canClickDestroid && (
+        <button onClick={destroidLuncher}> luncher destroid</button>
       )}
       {canClickUpdate && (
         <button onClick={() => (!update ? setUpdate(true) : setUpdate(false))}>

@@ -29,12 +29,7 @@ router.delete(
   verifyCanChanges,
   controllerLaunchersIdDelete,
 );
-router.put(
-  "/api/launchers/:id",
-  authenticateJWT,
-  verifyCanChanges,
-  controllerLaunchersIdPut,
-);
+router.put("/api/launchers/:id", authenticateJWT, controllerLaunchersIdPut);
 
 router.post(
   "/api/auth/register/create",
@@ -56,6 +51,11 @@ router.delete(
 );
 router.post("/api/auth/login", controllerLogin);
 router.get("/api/auth/getUser", authenticateJWT, controllerUserGet);
-router.get("/api/auth/getAllUsers", authenticateJWT,justAdmin, controllergetAllUsers);
+router.get(
+  "/api/auth/getAllUsers",
+  authenticateJWT,
+  justAdmin,
+  controllergetAllUsers,
+);
 
 export default router;

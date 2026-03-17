@@ -36,6 +36,11 @@ export const serviceLaunchersIdPut = async (id, updates) => {
       goodAndLigalUpdates.name = updates.name;
     }
   }
+  if (updates.destroid) {
+    if (typeof updates.destroid == "boolean") {
+      goodAndLigalUpdates.destroid = updates.destroid;
+    }
+  }
 
   await Lancher.findByIdAndUpdate(id, goodAndLigalUpdates);
   return;

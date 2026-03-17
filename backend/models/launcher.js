@@ -16,6 +16,10 @@ const lancherSchema = new mongoose.Schema({
   name: {
     type: String,
   },
+  destroid: {
+    type: Boolean,
+    default:false
+  },
 });
 
 export const Lancher = mongoose.model("Lancher", lancherSchema);

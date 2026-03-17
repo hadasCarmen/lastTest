@@ -28,3 +28,14 @@ export const updateLancherApi = async (lancher: Lancher, id: string) => await fe
     name: lancher.name,
   }),
 });
+export const destroidLancherApi = async (id: string) => await fetch(`http://localhost:5000/api/launchers/${id}`, {
+  method: "PUT",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": localStorage.getItem("token") || ""
+  },
+  body: JSON.stringify({
+    destroid: true,
+
+  }),
+});
