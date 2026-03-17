@@ -20,7 +20,7 @@ export default function GetCurrentUser() {
     };
     getUser();
   }, []);
-
+   
   return (
     <div>
       <ul>

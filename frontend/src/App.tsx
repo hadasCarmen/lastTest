@@ -10,6 +10,7 @@ import Protected from "./pages/Protected.tsx";
 import Navbar from "./components/Navbar.tsx";
 import GetCurrentUser from "./pages/GetCurrentUser.tsx";
 import GetAllUsers from "./pages/GetAllUsers.tsx";
+import UpdateUser from "./pages/UpdateUser.tsx";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/currentUser" element={<GetCurrentUser />} />
               <Route path="/getAllUsers" element={<GetAllUsers />} />
+              <Route path="/updateUser/:id" element={<UpdateUser />} />
             </Route>
           </Route>
         </Routes>

@@ -26,6 +26,7 @@ export default function Navbar() {
           createLancher
         </button>
         <button onClick={() => navigate("/register")}>register</button>
+        <button onClick={() => navigate("/currentUser")}>currentUser</button>
         <button onClick={() => navigate("/getAllUsers")}>getAllUsers</button>
         <button
           onClick={() => {

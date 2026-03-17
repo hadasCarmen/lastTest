@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import type { User } from "../types/IUser";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function GetAllUsers() {
-  let params = useParams();
-  const id = params.id;
   const navigate = useNavigate();
   const [users, setUsers] = useState<User[]>([]);
   useEffect(() => {
@@ -44,7 +42,7 @@ export default function GetAllUsers() {
         return (
           <div key={idx}>
             <h3>user{idx + 1}</h3>
-            <ul>
+            <ul >
               <li>city: {user.username}</li>
               <li>latitude:{user.password}</li>
               <li>longitude:{user.email}</li>
@@ -57,7 +55,9 @@ export default function GetAllUsers() {
             >
               delete user {idx + 1}
             </button>
-            <button onClick={() => navigate(`/updateUser`)}>update user {idx + 1}</button>
+            <button onClick={() => navigate(`/updateUser/${user._id}`)}>
+              update user {idx + 1}
+            </button>
           </div>
         );
       })}

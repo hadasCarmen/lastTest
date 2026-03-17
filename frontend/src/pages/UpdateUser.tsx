@@ -1,64 +1,39 @@
-import React, { useState } from "react";
-import { toast } from "react-toastify";
+import  { useState } from "react";
 import type { User } from "../types/IUser";
+import { useParams } from "react-router-dom";
 
-export default function Register() {
+export default function UpdateUser() {
+  let params = useParams();
+  const id = params.id;
   const [user, setUser] = useState<User>({
     username: "",
     password: "",
     email: "",
     user_type: "AirForceUser",
   });
-  const register = async (e: React.SubmitEvent) => {
-    e.preventDefault();
-    const response = await fetch(
-      "http://localhost:5000/api/auth/register/create",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: localStorage.getItem("token") || "",
-        },
-        body: JSON.stringify({
-          username: user.username,
-          password: user.password,
-          email: user.email,
-          user_type: user.user_type,
-        }),
+
+  const updateUserApi = async () =>
+    await fetch(`http://localhost:5000/api/auth/register/update`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token") || "",
       },
-    );
-   
-    if (!response.ok) {
-      setUser({
-        username: "",
-        password: "",
-        email: "",
-        user_type: "AirForceUser",
-      });
-      toast.error("user not create or create before");
-      return;
-    }
-    setUser({
-      username: "",
-      password: "",
-      email: "",
-      user_type: "AirForceUser",
+      body: JSON.stringify({
+        userId: id,
+        username: user.username,
+        password: user.password,
+        email: user.email,
+        user_type: user.user_type,
+      }),
     });
-    toast.success("user create");
-    return;
-  };
-  if (localStorage.getItem("user_type") !== "AdministratorUser") {
-    toast.error("you not denided");
-    return;
-  }
   return (
     <div>
-      <form action="" onSubmit={register}>
+      <form action="" onSubmit={updateUserApi}>
         <div>
           <label htmlFor="username">username:</label>
           <input
             type="text"
-            required
             name="username"
             id="username"
             value={user.username}
@@ -71,7 +46,6 @@ export default function Register() {
         <div>
           <label htmlFor="user_type">user_type:</label>
           <select
-            required
             name="user_type"
             id="user_type"
             value={user.user_type}
@@ -95,7 +69,6 @@ export default function Register() {
 
           <input
             type="password"
-            required
             name="password"
             id="password"
             value={user.password}
@@ -110,7 +83,6 @@ export default function Register() {
 
           <input
             type="email"
-            required
             name="email"
             id="email"
             value={user.email}
@@ -124,7 +96,7 @@ export default function Register() {
           />
         </div>
 
-        <button type="submit">create user</button>
+        <button type="submit">update user</button>
       </form>
     </div>
   );
