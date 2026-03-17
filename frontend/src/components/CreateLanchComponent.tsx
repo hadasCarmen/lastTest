@@ -46,10 +46,8 @@ export default function CreateLanchComponent(params: Params) {
     });
     return;
   };
-  const allLanchers = () => navigate("/");
   return (
     <div className="allPage">
-      <button onClick={allLanchers}>Get All Lanchers</button>
 
       <form action="" onSubmit={createOrUpdate}>
         <div>

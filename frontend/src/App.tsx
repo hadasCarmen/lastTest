@@ -7,6 +7,7 @@ import LaunchersId from "./pages/LaunchersId.tsx";
 import Login from "./pages/Login.tsx";
 import Register from "./pages/Register.tsx";
 import Protected from "./pages/Protected.tsx";
+import Navbar from "./components/Navbar.tsx";
 
 function App() {
   return (
@@ -15,10 +16,12 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route element={<Protected />}>
-            <Route path="/" element={<GetAllLanchers />} />
-            <Route path="/createLancher" element={<CreateLancher />} />
-            <Route path="/launchers/:id" element={<LaunchersId />} />
-            <Route path="/register" element={<Register />} />
+            <Route element={<Navbar />}>
+              <Route path="/getAllLanchers" element={<GetAllLanchers />} />
+              <Route path="/createLancher" element={<CreateLancher />} />
+              <Route path="/launchers/:id" element={<LaunchersId />} />
+              <Route path="/register" element={<Register />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

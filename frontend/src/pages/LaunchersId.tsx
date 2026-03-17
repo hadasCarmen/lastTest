@@ -34,7 +34,6 @@ export default function LaunchersId() {
     };
     allLanchers();
   }, []);
-  const createlanch = () => navigate(-1);
   const deleteLuncher = async () => {
     await fetch(`http://localhost:5000/api/launchers/${id}`, {
       method: "DELETE",
@@ -47,7 +46,6 @@ export default function LaunchersId() {
   };
   return (
     <div>
-      <button onClick={createlanch}>come back to all lunchers</button>
       <button onClick={deleteLuncher}>delete luncher</button>
       <button onClick={() => (!update ? setUpdate(true) : setUpdate(false))}>
         update luncher

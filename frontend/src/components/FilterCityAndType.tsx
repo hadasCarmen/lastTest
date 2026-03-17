@@ -10,11 +10,9 @@ export default function FilterCityAndType(params:Params) {
     const {city,rocketType,setCity,setRocketType}=params
   const navigate = useNavigate();
 
-  const createlanch = () => navigate("/createLancher");
 
   return (
     <div>
-      <button onClick={createlanch}>to create luncher</button>
       <input
         type="text"
         required
