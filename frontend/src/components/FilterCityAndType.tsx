@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import './FilterCityAndType.css'
 type Params={
 city:string,
@@ -8,7 +7,6 @@ setRocketType:(city:string)=>void
 }
 export default function FilterCityAndType(params:Params) {
     const {city,rocketType,setCity,setRocketType}=params
-  const navigate = useNavigate();
 
 
   return (

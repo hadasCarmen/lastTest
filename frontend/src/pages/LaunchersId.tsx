@@ -28,23 +28,23 @@ export default function LaunchersId() {
     name: "",
   });
   useEffect(() => {
-    const allLanchers = async () => {
-      const response = await fetch(
-        `http://localhost:5000/api/launchers/${id}`,
-        {
-          headers: {
-            Authorization: localStorage.getItem("token") || "",
-          },
-        },
-      );
-      if (!response.ok) {
-        toast.error("there is a problem with get lunchers from backend");
-      }
-      const data = await response.json();
-      setLancher(data);
-    };
     allLanchers();
   }, []);
+  const allLanchers = async () => {
+    const response = await fetch(
+      `http://localhost:5000/api/launchers/${id}`,
+      {
+        headers: {
+          Authorization: localStorage.getItem("token") || "",
+        },
+      },
+    );
+    if (!response.ok) {
+      toast.error("there is a problem with get lunchers from backend");
+    }
+    const data = await response.json();
+    setLancher(data);
+  };
   const deleteLuncher = async () => {
     await fetch(`http://localhost:5000/api/launchers/${id}`, {
       method: "DELETE",
@@ -58,6 +58,7 @@ export default function LaunchersId() {
   const destroidLuncher = async () => {
     if (id) {
       await destroidLancherApi(id);
+      await allLanchers()
     }
   };
   return (
@@ -80,6 +81,7 @@ export default function LaunchersId() {
         <li>longitude:{launcher.longitude}</li>
         <li>name:{launcher.name}</li>
         <li>rocketType:{launcher.rocketType}</li>
+        <li>destroid:{launcher.destroid ? "yes" : "not yet"}</li>
       </ul>
     </div>
   );

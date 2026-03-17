@@ -46,6 +46,7 @@ export default function GetAllLanchers() {
               <li>longitude:{lancher.longitude}</li>
               <li>name:{lancher.name}</li>
               <li>rocketType:{lancher.rocketType}</li>
+              <li>destroid:{lancher.destroid ? "yes" : "not yet"}</li>
             </ul>
           </div>
         );
