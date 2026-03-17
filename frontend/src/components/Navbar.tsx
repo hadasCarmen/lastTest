@@ -27,6 +27,7 @@ export default function Navbar() {
           createLancher
         </button>
         <button onClick={() => navigate("/register")}>register</button>
+        <button onClick={() => navigate("/currentUser")}>currentUser</button>
         <button
           onClick={() => {
             toast.success(`hi ${username} your job is ${user_type}`);

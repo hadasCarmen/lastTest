@@ -8,6 +8,7 @@ import Login from "./pages/Login.tsx";
 import Register from "./pages/Register.tsx";
 import Protected from "./pages/Protected.tsx";
 import Navbar from "./components/Navbar.tsx";
+import GetCurrentUser from "./pages/GetCurrentUser.tsx";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="/createLancher" element={<CreateLancher />} />
               <Route path="/launchers/:id" element={<LaunchersId />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/currentUser" element={<GetCurrentUser />} />
             </Route>
           </Route>
         </Routes>
