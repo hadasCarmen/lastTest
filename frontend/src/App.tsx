@@ -15,8 +15,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
+            <Route path="/" element={<Navbar />}>
           <Route element={<Protected />}>
-            <Route element={<Navbar />}>
               <Route path="/getAllLanchers" element={<GetAllLanchers />} />
               <Route path="/createLancher" element={<CreateLancher />} />
               <Route path="/launchers/:id" element={<LaunchersId />} />
