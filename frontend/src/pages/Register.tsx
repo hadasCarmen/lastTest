@@ -19,6 +19,7 @@ export default function Register() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: localStorage.getItem("token") || "",
         },
         body: JSON.stringify({
           username: user.username,
@@ -29,9 +30,21 @@ export default function Register() {
       },
     );
     if (!response.ok) {
+      setUser({
+        username: "",
+        password: "",
+        email: "",
+        user_type: "AirForceUser",
+      });
       toast.error("user not create or create before");
       return;
     }
+    setUser({
+      username: "",
+      password: "",
+      email: "",
+      user_type: "AirForceUser",
+    });
     toast.success("user create");
     return;
   };

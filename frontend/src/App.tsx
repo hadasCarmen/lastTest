@@ -6,17 +6,20 @@ import CreateLancher from "./pages/CreateLancher.tsx";
 import LaunchersId from "./pages/LaunchersId.tsx";
 import Login from "./pages/Login.tsx";
 import Register from "./pages/Register.tsx";
+import Protected from "./pages/Protected.tsx";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<GetAllLanchers />} />
-          <Route path="/createLancher" element={<CreateLancher />} />
-          <Route path="/launchers/:id" element={<LaunchersId />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route element={<Protected />}>
+            <Route path="/" element={<GetAllLanchers />} />
+            <Route path="/createLancher" element={<CreateLancher />} />
+            <Route path="/launchers/:id" element={<LaunchersId />} />
+            <Route path="/register" element={<Register />} />
+          </Route>
         </Routes>
       </BrowserRouter>
       <ToastContainer position="top-right" autoClose={3000} />

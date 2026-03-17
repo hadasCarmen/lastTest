@@ -8,7 +8,7 @@ export default function LaunchersId() {
   let params = useParams();
   const id = params.id;
   const navigate = useNavigate();
-  const [update,setUpdate]=useState<boolean>(false)
+  const [update, setUpdate] = useState<boolean>(false);
   const [launcher, setLancher] = useState<Lancher>({
     city: "",
     rocketType: "Shahab3",
@@ -18,7 +18,14 @@ export default function LaunchersId() {
   });
   useEffect(() => {
     const allLanchers = async () => {
-      const response = await fetch(`http://localhost:5000/api/launchers/${id}`);
+      const response = await fetch(
+        `http://localhost:5000/api/launchers/${id}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem("token") || "",
+          },
+        },
+      );
       if (!response.ok) {
         toast.error("there is a problem with get lunchers from backend");
       }
@@ -31,6 +38,9 @@ export default function LaunchersId() {
   const deleteLuncher = async () => {
     await fetch(`http://localhost:5000/api/launchers/${id}`, {
       method: "DELETE",
+      headers: {
+        Authorization: localStorage.getItem("token") || "",
+      },
     });
     navigate(-1);
     toast.success("luncher deletet");
@@ -39,8 +49,10 @@ export default function LaunchersId() {
     <div>
       <button onClick={createlanch}>come back to all lunchers</button>
       <button onClick={deleteLuncher}>delete luncher</button>
-      <button onClick={()=>!update?setUpdate(true):setUpdate(false)} >update luncher</button>
-      {update&&<CreateLanchComponent id={id} launcher={launcher}/>}
+      <button onClick={() => (!update ? setUpdate(true) : setUpdate(false))}>
+        update luncher
+      </button>
+      {update && <CreateLanchComponent id={id} launcher={launcher} />}
       <ul>
         <li>city: {launcher.city}</li>
         <li>latitude:{launcher.latitude}</li>

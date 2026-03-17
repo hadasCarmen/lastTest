@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import type { Lancher } from "../types/ILancher.ts";
 import FilterCityAndType from "../components/FilterCityAndType.tsx";
-import './GetAllLanchers.css'
+import "./GetAllLanchers.css";
 export default function GetAllLanchers() {
   const [launchers, setLanchers] = useState<Lancher[]>([]);
   const [city, setCity] = useState<string>("");
@@ -15,6 +15,11 @@ export default function GetAllLanchers() {
     const allLanchers = async () => {
       const response = await fetch(
         `http://localhost:5000/api/launchers?city=${city}&rocketType=${rocketType}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem("token") || "",
+          },
+        },
       );
       if (!response.ok) {
         toast.error("there is a problem with get lunchers from backend");

@@ -14,6 +14,7 @@ export default function Login() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token") || "",
       },
       body: JSON.stringify({
         username,
@@ -29,8 +30,8 @@ export default function Login() {
     const payload: { user_type: string } = jwtDecode(data.token);
     localStorage.setItem("user_type", `${payload.user_type}`);
     toast.success("login complete");
-    if (payload.user_type==="AdministratorUser") {
-        navigate('/register')
+    if (payload.user_type === "AdministratorUser") {
+      navigate("/register");
     }
   };
   return (
