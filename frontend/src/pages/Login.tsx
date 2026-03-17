@@ -27,9 +27,10 @@ export default function Login() {
     }
     const data = await response.json();
     localStorage.setItem("token", `Bearer ${data.token}`);
-    const payload: { user_type: string ,username:string} = jwtDecode(data.token);
+    const payload: { user_type: string ,username:string,userId:string} = jwtDecode(data.token);
     localStorage.setItem("user_type", `${payload.user_type}`);
     localStorage.setItem("username", `${payload.username}`);
+    localStorage.setItem("userId", `${payload.userId}`);
     toast.success(`login complete you are ${payload.user_type}`);
     if (payload.user_type === "AdministratorUser") {
       navigate("/getAllLanchers");

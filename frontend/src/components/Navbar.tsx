@@ -10,7 +10,13 @@ export default function Navbar() {
     <>
       <div>
         {username ? (
-          <button onClick={() => navigate("/login")}>loguot</button>
+          <button onClick={() => {
+            localStorage.removeItem('username')
+            localStorage.removeItem('user_type')
+            localStorage.removeItem('token')
+            navigate("/login")
+            
+        }}>loguot</button>
         ) : (
           <button onClick={() => navigate("/login")}>login</button>
         )}
