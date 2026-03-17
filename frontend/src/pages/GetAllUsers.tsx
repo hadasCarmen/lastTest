@@ -43,10 +43,10 @@ export default function GetAllUsers() {
           <div key={idx}>
             <h3>user{idx + 1}</h3>
             <ul >
-              <li>city: {user.username}</li>
-              <li>latitude:{user.password}</li>
-              <li>longitude:{user.email}</li>
-              <li>name:{user.user_type}</li>
+              <li>username: {user.username}</li>
+              <li>password:{user.password}</li>
+              <li>email:{user.email}</li>
+              <li>user_type:{user.user_type}</li>
             </ul>
             <button
               onClick={() => {

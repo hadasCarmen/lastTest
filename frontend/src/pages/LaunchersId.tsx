@@ -5,6 +5,15 @@ import { useEffect, useState } from "react";
 import CreateLanchComponent from "../components/CreateLanchComponent.tsx";
 
 export default function LaunchersId() {
+  const user_type = localStorage.getItem("user_type");
+  let canClickUpdate = true;
+  let canClickDelete = true;
+
+  if (user_type === "AirForceUser") {
+    canClickUpdate = false;
+    canClickDelete = false;
+  }
+
   let params = useParams();
   const id = params.id;
   const navigate = useNavigate();
@@ -46,10 +55,14 @@ export default function LaunchersId() {
   };
   return (
     <div>
-      <button onClick={deleteLuncher}>delete luncher</button>
-      <button onClick={() => (!update ? setUpdate(true) : setUpdate(false))}>
-        update luncher
-      </button>
+      {canClickDelete && (
+        <button onClick={deleteLuncher}>delete luncher</button>
+      )}
+      {canClickUpdate && (
+        <button onClick={() => (!update ? setUpdate(true) : setUpdate(false))}>
+          update luncher
+        </button>
+      )}
       {update && <CreateLanchComponent id={id} launcher={launcher} />}
       <ul>
         <li>city: {launcher.city}</li>
