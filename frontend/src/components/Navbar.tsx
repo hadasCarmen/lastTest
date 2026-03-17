@@ -8,7 +8,6 @@ export default function Navbar() {
   let canClickGetAllLanchers = false;
   let canClickcreateLancher = false;
   let canClickregister = false;
-  let canClickcurrentUser = false;
   let canClickgetAllUsers = false;
 
   if (user_type === "IntelligenceCorpsUser") {
@@ -19,7 +18,6 @@ export default function Navbar() {
     canClickGetAllLanchers = true;
     canClickcreateLancher = true;
     canClickregister = true;
-    canClickcurrentUser = true;
     canClickgetAllUsers = true;
   }
   if (user_type === "AirForceUser") {
@@ -55,9 +53,7 @@ export default function Navbar() {
         {canClickregister && (
           <button onClick={() => navigate("/register")}>register</button>
         )}
-        {canClickcurrentUser && (
-          <button onClick={() => navigate("/currentUser")}>currentUser</button>
-        )}
+        <button onClick={() => navigate("/currentUser")}>currentUser</button>
         {canClickgetAllUsers && (
           <button onClick={() => navigate("/getAllUsers")}>getAllUsers</button>
         )}
