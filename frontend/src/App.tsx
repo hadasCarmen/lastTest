@@ -9,6 +9,7 @@ import Register from "./pages/Register.tsx";
 import Protected from "./pages/Protected.tsx";
 import Navbar from "./components/Navbar.tsx";
 import GetCurrentUser from "./pages/GetCurrentUser.tsx";
+import GetAllUsers from "./pages/GetAllUsers.tsx";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               <Route path="/launchers/:id" element={<LaunchersId />} />
               <Route path="/register" element={<Register />} />
               <Route path="/currentUser" element={<GetCurrentUser />} />
+              <Route path="/getAllUsers" element={<GetAllUsers />} />
             </Route>
           </Route>
         </Routes>

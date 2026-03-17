@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import type { Lancher } from "../types/ILancher.ts";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import "./CreateLancher.css";
 import { createLancher, updateLancherApi } from "../fetchs/fetches.ts";
 
@@ -10,7 +9,6 @@ type Params = {
   launcher?: Lancher;
 };
 export default function CreateLanchComponent(params: Params) {
-  const navigate = useNavigate();
   const id = params?.id;
   const launcher = params?.launcher;
   const [lancher, setLanchr] = useState<Lancher>({

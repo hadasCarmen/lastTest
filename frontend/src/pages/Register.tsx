@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import type { User } from "../types/IUser";
 
@@ -10,7 +9,6 @@ export default function Register() {
     email: "",
     user_type: "AirForceUser",
   });
-  const navigate = useNavigate();
   const register = async (e: React.SubmitEvent) => {
     e.preventDefault();
     const response = await fetch(

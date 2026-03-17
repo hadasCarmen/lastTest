@@ -10,6 +10,7 @@ import { controllerLogin } from "../controllers/controllerLogin.js";
 import { authenticateJWT } from "../middlewere/verifyToken.js";
 import { controllerUserIdDelete } from "../controllers/controllerUserIdDelete.js";
 import { controllerUserGet } from "../controllers/controllerUserGet.js";
+import { controllergetAllUsers } from "../controllers/controllergetAllUsers.js";
 
 const router = express.Router();
 
@@ -32,5 +33,6 @@ router.delete(
 );
 router.post("/api/auth/login", controllerLogin);
 router.get("/api/auth/getUser", authenticateJWT, controllerUserGet);
+router.get("/api/auth/getAllUsers", authenticateJWT, controllergetAllUsers);
 
 export default router;
